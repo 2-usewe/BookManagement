@@ -162,11 +162,13 @@ bookRouter.post('/update', async (req, res) => {
       })
     }
     /**let update the record */
-    const updateBook = await Books.updateOne({ _id: id }, updatedData);
+    await Books.updateOne({ _id: id }, updatedData);
+
+    const book = await Books.find({ _id: id });
 
     return res.status(200).json({
       status: 200,
-      data:updateBook,
+      data:book,
       isError: false,
       message: "Book updated successfully"
     })
@@ -199,10 +201,10 @@ bookRouter.delete('/delete', async (req, res) => {
         message: "No such book found"
       })
     }
-    let deleteBook = await Books.deleteOne({ _id: _id });
+    await Books.deleteOne({ _id: _id });
     return res.status(200).json({
       status: 200,
-      data:deleteBook,
+      data:books,
       isError: false,
       message: "Book deleted successfully"
     })
