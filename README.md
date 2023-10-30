@@ -7,6 +7,7 @@
 
 
 #endpoints:-
+
           1. /api/book/add
                  -> Here in this API we add a new book record and store it on db. 
                     input request from body param{title,author,summary}
