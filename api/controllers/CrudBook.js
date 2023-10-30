@@ -71,7 +71,7 @@ bookRouter.get('/view/all', async (req, res) => {
       status: 200,
       data:books,
       isError: false,
-      message: "Book added successfully"
+      message: "Book fetched successfully"
     })
   }
   catch (error) {
@@ -106,7 +106,7 @@ bookRouter.get('/view', async (req, res) => {
       status: 200,
       data:books,
       isError: false,
-      message: "Book added successfully"
+      message: "Book fetched successfully"
     })
   }
   catch (error) {
@@ -129,11 +129,11 @@ bookRouter.post('/update', async (req, res) => {
   try {
     //if the Book already exist with same author
     const {id,title,summary,author} = req.body;
-    if (!id || !title || !summary || !author) {
+    if (!id) {
       return res.status(400).json({
         status: 400,
         isError: true,
-        message: 'Please enter all required fields'
+        message: 'Please enter required field id'
       });
     }
     /**check if the book exist or not */
